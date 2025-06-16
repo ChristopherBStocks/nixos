@@ -25,16 +25,22 @@
            ./hosts/personal-nix-control/configuration.nix
          ];
        };
+       hydrogroup-nix-control = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         modules = [
+           disko.nixosModules.disko
+           ./hosts/hydrogroup-nix-control/configuration.nix
+         ];
+       };
     };
     colmena = {
       meta = {
         nixpkgs = import nixpkgs { system = "x86_64-linux"; };
         specialArgs = { inherit inputs; };
       };
-      defaults.imports = [
-        disko.nixosModules.disko
-      ];
+      defaults.imports = [ disko.nixosModules.disko ];
       personal-nix-control = ./hosts/personal-nix-control;
+      hydrogroup-nix-control = ./hosts/hydrogroup-nix-control;
     };
   };
 }
