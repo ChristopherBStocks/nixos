@@ -33,6 +33,20 @@
            ./hosts/pnixctl02/configuration.nix
          ];
        };
+       hgnixctl01 = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         modules = [
+           disko.nixosModules.disko
+           ./hosts/hgnixctl01/configuration.nix
+         ];
+       };
+       hgnixctl02 = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         modules = [
+           disko.nixosModules.disko
+           ./hosts/hgnixctl02/configuration.nix
+         ];
+       };
     };
     colmena = {
       meta = {
@@ -44,6 +58,8 @@
       ];
       pnixctl01 = ./hosts/pnixctl01;
       pnixctl02 = ./hosts/pnixctl02;
+      hgnixctl01 = ./hosts/hgnixctl01;
+      hgnixctl02 = ./hosts/hgnixctl02;
     };
   };
 }
