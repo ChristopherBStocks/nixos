@@ -1,5 +1,5 @@
 # nix run github:nix-community/nixos-anywhere -- --flake .#<host> -i ~/.ssh/deploy --generate-hardware-config nixos-generate-config ./hosts/<host>/hardware-configuration.nix root@<ip>
-# nix run github:nix-community/nixos-anywhere -- --flake .#hgnixprod01 -i ~/.ssh/deploy root@192.168.41.103
+# nix run github:nix-community/nixos-anywhere -- --flake .#<host> -i ~/.ssh/deploy  root@<ip>
 {
   description = "NixOS System Deployment and Management Flake";
 
