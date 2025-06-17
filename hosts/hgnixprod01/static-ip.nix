@@ -12,5 +12,10 @@ in {
     }];
   };
 
+  networking.nameservers = [
+    "1.1.1.3"
+    "1.0.0.3"
+  ];
+
   networking.defaultGateway  = "192.168.41.251";
 }
