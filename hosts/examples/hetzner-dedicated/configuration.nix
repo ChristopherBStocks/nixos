@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./static-ip.nix
     ./disko.nix
-    ../../configs/personal/servers/generic.nix
+    <config>
   ];
 
   system.stateVersion                   = "25.05";
