@@ -25,7 +25,7 @@
             type    = "8300";
             content = {
               type       = "filesystem";
-              format     = "ext4";
+              format     = "vfat";
               mountpoint = "/";
               mountOptions = [ "noatime" "discard" ];
             };
