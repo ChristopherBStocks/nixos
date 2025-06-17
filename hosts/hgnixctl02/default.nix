@@ -1,7 +1,7 @@
 {
   deployment = {
     targetHost = "192.168.40.17";
-    targetUser = "colmena";
+    targetUser = "hgcolmena";
     targetPort = 2002;
     buildOnTarget = false;
     tags = [ "hydrogroup" "vm" "hyperv" ];
