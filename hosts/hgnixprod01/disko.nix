@@ -50,7 +50,30 @@
             content = {
               type        = "filesystem";
               format      = "ext4";
-              mountpoint  = "/srv/data"
+              mountpoint  = "/srv/data/hdd";
+              mountOptions = [ "noatime" "discard" ];
+            };
+          };
+
+        };
+      };
+    };
+
+     disk.sdc = {
+      device = "/dev/sdc";
+      type = "disk";
+
+      content = {
+        type = "gpt";
+        partitions = {
+
+          root = {
+            size    = "100%";
+            type    = "8300";
+            content = {
+              type        = "filesystem";
+              format      = "ext4";
+              mountpoint  = "/srv/data/ssd";
               mountOptions = [ "noatime" "discard" ];
             };
           };
