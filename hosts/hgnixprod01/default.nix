@@ -6,8 +6,15 @@
     buildOnTarget = false;
     tags = [ "hydrogroup" "vm" "hyperv" ];
     allowLocalDeployment = false;
+    signing.keyFile = "/home/hgcolmena/nixos/keys/hydrogroup-sec.pem";
   };
   imports = [
     ./configuration.nix
   ];
+  nix.settings = {
+    require-sigs = true;
+    trusted-public-keys = [
+      "hydrogroup-sec:j3puB8CA+1ERuJ9RDFVrTrgj70GyDo7+5L9OGb7sqh8="
+    ];
+  };
 }
