@@ -14,7 +14,7 @@
             type       = "EF00";
             content = {
               type      = "filesystem";
-              format    = "fat32";
+              format    = "vfat";
               mountpoint = "/boot";
               mountOptions = [ "umask=0077" "noatime" ];
             };
@@ -25,7 +25,7 @@
             type    = "8300";
             content = {
               type       = "filesystem";
-              format     = "vfat";
+              format     = "ext4";
               mountpoint = "/";
               mountOptions = [ "noatime" "discard" ];
             };
