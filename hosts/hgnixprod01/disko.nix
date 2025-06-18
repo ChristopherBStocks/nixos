@@ -1,80 +1,42 @@
 { lib, ... }:
 {
-    disko.devices = {
+  disko.devices = {
+    disk.sda = {
+      device = "/dev/sda";
+      type   = "disk";
 
-      os = {
-        type   = "disk";
-        device = "/dev/disk/by-path/acpi-VMBUS:00-vmbus-7905a6bd4bf04444a7386f51a8cb7ec5-lun-0";
-        content = {
-          type   = "gpt";
-          partitions = {
-            esp = {
-              type  = "EF00";
-              size  = "512M";
-              content = {
-                type       = "filesystem";
-                format     = "vfat";
-                mountpoint = "/boot/efi";
-                mountOptions = [ "umask=0077" "noatime" ];
-              };
-            };
-            root = {
-              type  = "8300";
-              size  = "remaining";
-              content = {
-                type       = "filesystem";
-                format     = "ext4";
-                mountpoint = "/";
-                mountOptions = [ "noatime" "discard" ];
-              };
+      content = {
+        type = "gpt";
+        partitions = {
+
+          esp = {
+            size       = "1G";
+            type       = "EF00";
+            content = {
+              type      = "filesystem";
+              format    = "fat32";
+              mountpoint = "/boot";
+              mountOptions = [ "umask=0077" "noatime" ];
             };
           };
+
+          root = {
+            size    = "100%";
+            type    = "8300";
+            content = {
+              type       = "filesystem";
+              format     = "vfat";
+              mountpoint = "/";
+              mountOptions = [ "noatime" "discard" ];
+            };
+          };
+
         };
       };
-
-      ssd-data = {
-        type   = "disk";
-        device = "/dev/disk/by-path/acpi-VMBUS:00-vmbus-7905a6bd4bf04444a7386f51a8cb7ec5-lun-1";
-        content = {
-          type = "gpt";
-          partitions = {
-            data = {
-              size    = "100%";
-              type    = "8300";
-              content = {
-                type        = "filesystem";
-                format      = "ext4";
-                mountpoint  = "/srv/data/sdd";
-                mountOptions = [ "noatime" "discard" ];
-              };
-            };
-          };
-        };
-      }
-
-      hdd-data = {
-        type   = "disk";
-        device = "/dev/disk/by-path/acpi-VMBUS:00-vmbus-7905a6bd4bf04444a7386f51a8cb7ec5-lun-2";
-        content = {
-          type = "gpt";
-          partitions = {
-            data = {
-              size    = "100%";
-              type    = "8300";
-              content = {
-                type        = "filesystem";
-                format      = "ext4";
-                mountpoint  = "/srv/data/hdd";
-                mountOptions = [ "noatime" "discard" ];
-              };
-            };
-          };
-        };
-      }
     };
-
-    boot.loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
+  };
+  boot.loader = {
+    systemd-boot.enable = true;
+    efi.canTouchEfiVariables = true;
+  };
 }
