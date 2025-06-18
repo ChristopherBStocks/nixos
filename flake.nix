@@ -55,6 +55,13 @@
            ./hosts/hgnixprod01/configuration.nix
          ];
        };
+       hgnixprod02 = nixpkgs.lib.nixosSystem {
+         system = "x86_64-linux";
+         modules = [
+           disko.nixosModules.disko
+           ./hosts/hgnixprod02/configuration.nix
+         ];
+       };
     };
     colmena = {
       meta = {
@@ -69,6 +76,7 @@
       hgnixctl01 = ./hosts/hgnixctl01;
       hgnixctl02 = ./hosts/hgnixctl02;
       hgnixprod01 = ./hosts/hgnixprod01;
+      hgnixprod02 = ./hosts/hgnixprod02;
     };
   };
 }
