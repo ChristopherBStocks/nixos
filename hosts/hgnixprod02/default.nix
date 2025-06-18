@@ -6,7 +6,6 @@
     buildOnTarget = false;
     tags = [ "hydrogroup" "vm" "hyperv" ];
     allowLocalDeployment = false;
-    signing.keyFile = "/home/hgcolmena/nixos/keys/hydrogroup-sec.pem";
   };
   imports = [
     ./configuration.nix
