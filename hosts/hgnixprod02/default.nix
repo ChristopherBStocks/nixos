@@ -11,9 +11,6 @@
     ./configuration.nix
   ];
   nix.settings = {
-    require-sigs = true;
-    trusted-public-keys = [
-      "hydrogroup-sec:j3puB8CA+1ERuJ9RDFVrTrgj70GyDo7+5L9OGb7sqh8="
-    ];
+    trusted-users = [ "hgcolmena" ];
   };
 }
