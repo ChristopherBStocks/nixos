@@ -10,7 +10,5 @@
   imports = [
     ./configuration.nix
   ];
-  nix.settings = {
-    trusted-users = [ "hgcolmena" ];
-  };
+
 }

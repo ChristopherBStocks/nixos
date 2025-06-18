@@ -11,6 +11,10 @@
     ./configuration.nix
   ];
   nix.settings = {
-    trusted-users = [ "hgcolmena" ];
+    require-sigs = true;
+    trusted-public-keys = [
+      "hydrogroup:NWYXdVZW8PS2E/Fx04nH/mxV/pIuMMU7OuLD8RLMcrI="
+      "cache.nixos.org-1:viIS5cG7z5S4FjVHaY2Pc6mfis/9+r7Zg47D6R4wlmY="
+    ];
   };
 }

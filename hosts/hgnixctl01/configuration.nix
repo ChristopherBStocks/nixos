@@ -9,5 +9,14 @@
   ];
   system.stateVersion                   = "25.05";
   networking.hostName                   = "hgnixctl01";
-  nix.settings.experimental-features    = ["nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features    = ["nix-command" "flakes" ];
+    require-sigs = true;
+    secret-key-files = [ "/etc/nix/keys/hydrogroup.pem" ];
+    trusted-public-keys = [
+      "hydrogroup:kgnaukG2WKBciqEOe6V+mPAxhEdEoL+5FhaJaOyXvvw="
+      "cache.nixos.org-1:viIS5cG7z5S4FjVHaY2Pc6mfis/9+r7Zg47D6R4wlmY="
+    ];
+    trusted-users = [ "root" "hgcolmena" ];
+  };
 }
